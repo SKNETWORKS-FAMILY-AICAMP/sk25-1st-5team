@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 
 def render_sidebar():
     st.markdown(
@@ -41,7 +42,10 @@ def render_sidebar():
     )
 
     with st.sidebar:
-        st.image("./img/autok_logo.png")
+        # 프로젝트 루트 경로 찾기
+        root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        logo_path = os.path.join(root_dir, 'img', 'autok_logo.png')
+        st.image(logo_path)
         st.caption("(v 1.0.0. copyright by SKN25 TEAM5)")
 
         if st.button("등록 현황"):
