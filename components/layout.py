@@ -1,6 +1,6 @@
 import streamlit as st
 
-def render_sidebar(active: str = ""):
+def render_sidebar():
     st.markdown(
         """
         <style>

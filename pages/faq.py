@@ -6,7 +6,7 @@ from components.layout import render_sidebar, render_main_box
 
 st.set_page_config(page_title="FAQ", layout="wide")
 
-render_sidebar(active="faq")
+render_sidebar()
 box = render_main_box(title="FAQ")
 
 # Box 안에 FAQ 렌더
