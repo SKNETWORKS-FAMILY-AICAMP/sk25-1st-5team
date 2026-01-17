@@ -61,64 +61,81 @@ with box:
     # --------------------------------------------------
     # 4. 분기별 꺾은선 그래프 함수
     # --------------------------------------------------
+    
     def plot_quarter_line(df_quarter: pd.DataFrame, region: str):
-        df = df_quarter.copy()
-        df["YearQuarter"] = df["Year"].astype(str) + "-" + df["Quarter"]
+    df = df_quarter.copy()
+    df["YearQuarter"] = df["Year"].astype(str) + "-" + df["Quarter"]
 
-        # 전국 / 시도 분기
-        if region == "전국":
-            df_plot = (
-                df
-                .groupby("YearQuarter")[["psg_car", "van", "truck", "sp_car"]]
-                .sum()
-                .reset_index()
-            )
-            title = "전국 분기별 차량 등록 현황"
-        else:
-            df_plot = df[df["sido"] == region]
-            title = f"{region} 분기별 차량 등록 현황"
-
-        # x축 순서 보정
-        quarters_order = [
-            f"{year}-{q}"
-            for year in sorted(df["Year"].unique())
-            for q in ["1분기", "2분기", "3분기", "4분기"]
-        ]
-
-        df_plot["YearQuarter"] = pd.Categorical(
-            df_plot["YearQuarter"],
-            categories=quarters_order,
-            ordered=True
+    # 전국 / 시도 분기
+    if region == "전국":
+        df_plot = (
+            df
+            .groupby("YearQuarter")[["psg_car", "van", "truck", "sp_car"]]
+            .sum()
+            .reset_index()
         )
+        title = "전국 분기별 차량 등록 현황"
+    else:
+        df_plot = df[df["sido"] == region]
+        title = f"{region} 분기별 차량 등록 현황"
 
-        df_melt = df_plot.melt(
-            id_vars="YearQuarter",
-            value_vars=["psg_car", "van", "truck", "sp_car"],
-            var_name="CarType",
-            value_name="Count"
-        )
+    # x축 순서 보정
+    quarters_order = [
+        f"{year}-{q}"
+        for year in sorted(df["Year"].unique())
+        for q in ["1분기", "2분기", "3분기", "4분기"]
+    ]
 
-        fig = px.line(
-            df_melt,
-            x="YearQuarter",
-            y="Count",
-            color="CarType",
-            markers=True,
-            title=title
-        )
+    df_plot["YearQuarter"] = pd.Categorical(
+        df_plot["YearQuarter"],
+        categories=quarters_order,
+        ordered=True
+    )
 
-        fig.update_layout(
-            height=500,
-            plot_bgcolor="white",
-            paper_bgcolor="white",
-            font=dict(color="black")
-        )
+    # wide → long
+    df_melt = df_plot.melt(
+        id_vars="YearQuarter",
+        value_vars=["psg_car", "van", "truck", "sp_car"],
+        var_name="CarType",
+        value_name="Count"
+    )
 
-        fig.update_xaxes(showline=True, linecolor="black")
-        fig.update_yaxes(showline=True, linecolor="black", type="log")
-        fig.update_traces(marker=dict(size=4))
+    fig = px.line(
+        df_melt,
+        x="YearQuarter",
+        y="Count",
+        color="CarType",
+        markers=True,
+        title=title
+    )
 
-        return fig
+    # ===== ipynb와 동일한 y축 스타일 =====
+    fig.update_layout(
+        height=500,
+        plot_bgcolor="white",
+        paper_bgcolor="white",
+        font=dict(color="black")
+    )
+
+    fig.update_xaxes(
+        tickangle=45,
+        showline=True,
+        linecolor="black",
+        ticks="outside",
+        tickcolor="black"
+    )
+
+    fig.update_yaxes(
+        showline=True,
+        linecolor="black",
+        ticks="outside",
+        tickcolor="black"
+    )
+
+    fig.update_traces(marker=dict(size=4))
+
+    return fig
+
 
     df = load_data()
     df_q = preprocess_to_quarter_df(df)
