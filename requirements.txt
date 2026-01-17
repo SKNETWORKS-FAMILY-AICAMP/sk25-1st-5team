@@ -1,1 +1,3 @@
-plotplotly==6.5.0
+plotly==6.5.0
+streamlit-folium==0.26.1
+geopandas==1.1.2
