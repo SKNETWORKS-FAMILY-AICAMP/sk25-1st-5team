@@ -121,7 +121,12 @@ sk25-1st-5team/
 
 - **FAQ 데이터**  
   자동차 관련 FAQ는 **총 6개 기업**의 공식 데이터를 수집·정리하여 활용하였습니다.
-
+  - [Hyundai](https://www.hyundai.com/kr/ko/faq.html)
+  - [Kia](https://www.kia.com/kr/customer-service/center/faq)
+  - [Genesis](https://www.genesis.com/kr/ko/support/faq.html)
+  - [KGM](https://www.kg-mobility.com/sr/online-center/faq/detail?searchWord=&categoryCd=304)
+  - [Chevrolet](https://www.chevrolet.co.kr/faq/product-maintenance)
+  - [BMW](https://www.bmw.co.kr/kr/s/?language=ko)
 
 ## 4.4 화면·기능 설계서
 ### Main Page
