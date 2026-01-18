@@ -5,6 +5,10 @@ def render_sidebar():
     st.markdown(
         """
         <style>
+        section[data-testid="stSidebar"] {
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+        }
+        
         section[data-testid="stSidebar"] .stButton { 
             display: flex; 
             justify-content: center; 
