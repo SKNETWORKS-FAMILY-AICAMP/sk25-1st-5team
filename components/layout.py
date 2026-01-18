@@ -74,7 +74,7 @@ def render_sidebar():
             st.switch_page("pages/main.py")
         if st.button("인구 차량 추이"):
             st.switch_page("pages/population.py")
-        if st.button("정비소 비율"):
+        if st.button("정비소 인프라 현황"):
             st.switch_page("pages/repair_ratio_map.py")
         if st.button("정비소 지도"):
             st.switch_page("pages/maintenance.py")
