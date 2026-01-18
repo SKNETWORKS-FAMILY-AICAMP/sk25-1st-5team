@@ -108,7 +108,20 @@ sk25-1st-5team/
 ## 4.2 ERD
 <div align="left"> <a href="./assets/docs/erd.png"> <img src="./assets/docs/erd.png" alt="ERD" width="800" /> </a> </div>
 
-## 4.3 테이블 요약
+## 4.3 데이터 출처
+본 프로젝트는 다음과 같은 데이터를 활용하여 구성되었습니다.
+
+- **정비소 데이터**  
+  공공데이터포털에서 제공하는  
+  [전국자동차정비업체표준데이터](https://www.data.go.kr/data/15028204/standard.do#layer_data_infomation)를 활용하였습니다.
+
+- **자동차 등록 데이터**  
+  국토교통부 통계누리에서 제공하는  
+  [자동차등록현황보고](https://stat.molit.go.kr/portal/cate/statMetaView.do?hRsId=58)를 활용하였습니다.
+
+- **FAQ 데이터**  
+  자동차 관련 FAQ는 **총 6개 기업**의 공식 데이터를 수집·정리하여 활용하였습니다.
+
 
 ## 4.4 화면·기능 설계서
 ### Main Page
