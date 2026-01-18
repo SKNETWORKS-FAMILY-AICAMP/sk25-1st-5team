@@ -9,7 +9,7 @@ from branca.element import Template, MacroElement
 import util
 from components.layout import render_sidebar, render_main_box
 
-st.set_page_config(page_title="정비소 비율", layout="wide")
+st.set_page_config(page_title="정비소 인프라 현황", layout="wide")
 
 render_sidebar()
 box = render_main_box(title="정비소 인프라 현황")
