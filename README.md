@@ -1,26 +1,23 @@
 # 1. 팀 소개
-| 박연정 | 박지현 | 여해준 | 이상민 | 이채림 |
+| 박연정 / 팀원 | 박지현 / 팀원 | 여해준 / 팀원 | 이상민 / 팀장 | 이채림 / 팀원 |
 |:--:|:--:|:--:|:--:|:--:|
-| <img src="./assets/team/햄버거(연정).jpg" width="90" /> | <img src="./assets/team/히터(지현).jpg" width="90" /> | <img src="./assets/team/좀비(해준).jpg" width="90" /> | <img src="./assets/team/택시(상민).jpg" width="90" /> | <img src="./assets/team/초코(채림).jpg" width="90" /> |
+| <img src="./assets/team/햄버거(연정).jpg" width="200" /> | <img src="./assets/team/히터(지현).jpg" width="200" /> | <img src="./assets/team/좀비(해준).jpg" width="200" /> | <img src="./assets/team/택시(상민).jpg" width="200" /> | <img src="./assets/team/초코(채림).jpg" width="200" /> |
 | `@yeony-park` | `@qkrwlgus89` | `@inoocap-ux` | `@Sangmin630` | `@chaechae18` |
-| 담당 업무 요약 | 담당 업무 요약 | 담당 업무 요약 | 담당 업무 요약 | 담당 업무 요약 |
+| 인구-차량 추이 페이지<br>FAQ 크롤링<br>공통 함수 모듈화 | 차량 등록 현황 페이지<br>데이터 수집 및 전처리 | 정비소 지도 페이지 <br>데이터 수집 및 전처리 | FAQ 페이지<br>FAQ 크롤링<br>공통 레이아웃 컴포넌트 | 정비소 인프라 현황 페이지<br>FAQ 크롤링<br>발표자료 |
 
----
 
 # 2. 프로젝트 기간
 
 - **2026.01.16 ~ 2026.01.19**
 
-# 3. 프로젝트 개요
-
+# 2. 프로젝트 개요
 ## 📕 프로젝트명
 <div align="left">
-  <img src="./img/autok_logo.png" alt="Auto, okay? Logo" width="400" />
+  <img src="./img/autok_logo.png" alt="Auto, okay? Logo" width="300" />
 </div>
-<h3 align="center">Auto, okay?</h3>
 
 ## ✅ 프로젝트 배경 및 목적
-본 프로젝트는 자동차 등록 현황과 정비 인프라 간의 불균형을 데이터 기반으로 분석하여, 지역별 정비소 부족 문제를 시각화하고 개선 방안 마련의 기초 자료를 제공하는 것을 목표로 합니다.
+자동차 등록 현황과 정비 인프라 간의 불균형을 데이터 기반으로 분석하여, 지역별 정비소 부족 문제를 시각화하고 개선 방안 마련의 기초 자료를 제공하는 것을 목표로 합니다.
 
 ## 🖐️ 프로젝트 소개
 본 프로젝트는 다음과 같은 주요 기능을 제공합니다:
@@ -152,6 +149,21 @@ sk25-1st-5team/
 ---
 
 # 5. 기술 스택
+## 🛠️ Development
+### Frontend & Visualization
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Folium](https://img.shields.io/badge/Folium-77B829?style=for-the-badge&logo=folium&logoColor=white)
+![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
+
+### Backend & DB
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+
+### Web scrapping & Data processing
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+
 
 ---
 
