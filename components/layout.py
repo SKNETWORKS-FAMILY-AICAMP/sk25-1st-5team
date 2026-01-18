@@ -1,45 +1,63 @@
 import streamlit as st
 import os
 
+# 색상
+SIDEBAR_SHADOW = "rgba(0, 0, 0, 0.1)"
+BUTTON_BG_COLOR = "#5D8C7A"
+BUTTON_TEXT_COLOR = "white"
+SELECTBOX_BORDER_COLOR = "#d0d0d0"
+MAIN_TITLE_BG_COLOR = "#f1d7d2"
+MAIN_TITLE_TEXT_COLOR = "#222"
+
+
 def render_sidebar():
     st.markdown(
-        """
+        f"""
         <style>
-        section[data-testid="stSidebar"] {
-            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-        }
+        section[data-testid="stSidebar"] {{
+            box-shadow: 2px 0 8px {SIDEBAR_SHADOW};
+        }}
         
-        section[data-testid="stSidebar"] .stButton { 
+        section[data-testid="stSidebar"] .stButton {{ 
             display: flex; 
             justify-content: center; 
             width: 100%;
             margin-top: 2px;
-        }
-        section[data-testid="stSidebar"] .stButton > button {
-            background-color: #5D8C7A ;
-            color: white;
+        }}
+        section[data-testid="stSidebar"] .stButton > button {{
+            background-color: {BUTTON_BG_COLOR};
+            color: {BUTTON_TEXT_COLOR};
             font-weight: 700;
             border-radius: 8px;
             width: 200px;
             height: 50px;
             text-align: center;
-        }
+        }}
 
-        section[data-testid="stSidebar"] .stImage {
+        section[data-testid="stSidebar"] .stImage {{
             display: flex;
             justify-content: center;
-        }
+        }}
 
-        section[data-testid="stSidebar"] .stImage > div {
+        section[data-testid="stSidebar"] .stImage > div {{
             height: 150px !important;
             overflow: hidden !important;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
+        }}
 
-        section[data-testid="stSidebar"] img { display:block; margin: 0 auto; }
-        section[data-testid="stSidebar"] .stCaption { text-align:center !important; }
+        section[data-testid="stSidebar"] img {{ display:block; margin: 0 auto; }}
+        section[data-testid="stSidebar"] .stCaption {{ text-align:center !important; }}
+        
+        /* Selectbox style */
+        div[data-baseweb="select"] > div {{
+            border: 1px solid {SELECTBOX_BORDER_COLOR};
+        }}
+        
+        div[data-baseweb="select"] {{
+            max-width: 200px;
+        }}
         </style>
         """,
         unsafe_allow_html=True,
@@ -66,22 +84,22 @@ def render_sidebar():
 
 def render_main_box(title: str):
     st.markdown(
-        """
+        f"""
         <style>
-        .main-title {
-            background: #f1d7d2;
+        .main-title {{
+            background: {MAIN_TITLE_BG_COLOR};
             border-radius: 8px;
             padding: 10px 18px;
             font-weight: 800;
-            color: #222;
+            color: {MAIN_TITLE_TEXT_COLOR};
             display: inline-block;
             margin-bottom: 10px;
-        }
+        }}
 
         
-        div[data-testid="stVerticalBlock"] > div:has(> div[data-testid="stContainer"]) {
+        div[data-testid="stVerticalBlock"] > div:has(> div[data-testid="stContainer"]) {{
             min-height: 720px;
-        }
+        }}
         </style>
         """,
         unsafe_allow_html=True,
