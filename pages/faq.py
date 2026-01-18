@@ -3,6 +3,7 @@ import streamlit as st
 import ast
 
 from components.layout import render_sidebar, render_main_box
+from util import get_table_df
 
 st.set_page_config(page_title="FAQ", layout="wide")
 
@@ -12,16 +13,16 @@ box = render_main_box(title="FAQ")
 # Box 안에 FAQ 렌더
 with box:
     # 회사 이름(탭 버튼) -> 해당 회사 FAQ CSV 파일 경로를 매핑
-    COMPANY_FILES = {
-        "HYUNDAI": "data/hyundai_faq.csv",
-        "KIA": "data/kia_faq.csv",
-        "GENESIS": "data/genesis_faq.csv",
-        "KGM": "data/kgm_faq.csv",
-        "CHEVROLET": "data/chevrolet_faq.csv",
-        "BMW": "data/bmw_faq.csv",
+    COMPANY_MAP = {
+        "HYUNDAI": "현대",
+        "KIA": "KIA",
+        "GENESIS": "Genesis",
+        "KGM": "KGM",
+        "CHEVROLET": "Chevrolet",
+        "BMW": "BMW"
     }
 
-    companies = list(COMPANY_FILES.keys())
+    companies = list(COMPANY_MAP.keys())
 
     # 기본값 현대로 설정
     if "company" not in st.session_state:
@@ -35,15 +36,19 @@ with box:
                 st.session_state.company = c
 
 
-    # 선택된 기업 저장 및 faq 데이터 불러오기
-    selected = st.session_state.company
+    # 웹에서 표시될 기업명
+    selected_display = st.session_state.company
 
-    df = pd.read_csv(COMPANY_FILES[selected])
-    pairs_col = df.columns[1]
+    # DB 기업명
+    selected_db_name = COMPANY_MAP[selected_display]
+
+    # 선택된 기업 저장 및 faq 데이터 불러오기
+    df = get_table_df("FAQ")
+    df = df[df["company_name"] == selected_db_name]
 
     qa_list = []
     for _, row in df.iterrows():
-        pairs = row[pairs_col]
+        pairs = row["faq_pairs"]
         if isinstance(pairs, str):
             pairs = ast.literal_eval(pairs)
         for q, a in pairs.items():
@@ -61,4 +66,4 @@ with box:
     # 질문을 클릭하면 답변이 보이게 함
     for q, a in qa_list:
         with st.expander(q):
-            st.write(a)
+            st.text(a)
