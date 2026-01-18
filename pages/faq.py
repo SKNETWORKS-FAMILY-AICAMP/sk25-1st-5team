@@ -10,31 +10,43 @@ st.set_page_config(page_title="FAQ", layout="wide")
 render_sidebar()
 box = render_main_box(title="FAQ")
 
+# 회사 이름(탭 버튼) -> 해당 회사 FAQ CSV 파일 경로를 매핑
+COMPANY_MAP = {
+    "HYUNDAI": "현대",
+    "KIA": "KIA",
+    "GENESIS": "Genesis",
+    "KGM": "KGM",
+    "CHEVROLET": "Chevrolet",
+    "BMW": "BMW"
+}
+
+companies = list(COMPANY_MAP.keys())
+
+# 기본값 현대로 설정
+if "company" not in st.session_state:
+    st.session_state.company = "HYUNDAI"
+
+
 # Box 안에 FAQ 렌더
 with box:
-    # 회사 이름(탭 버튼) -> 해당 회사 FAQ CSV 파일 경로를 매핑
-    COMPANY_MAP = {
-        "HYUNDAI": "현대",
-        "KIA": "KIA",
-        "GENESIS": "Genesis",
-        "KGM": "KGM",
-        "CHEVROLET": "Chevrolet",
-        "BMW": "BMW"
-    }
-
-    companies = list(COMPANY_MAP.keys())
-
-    # 기본값 현대로 설정
-    if "company" not in st.session_state:
-        st.session_state.company = "HYUNDAI"
-
     # 기업별 버튼 만들기
     tab_cols = st.columns(len(companies), gap="small")
-    for i, c in enumerate(companies):
-        with tab_cols[i]:
-            if st.button(c, key=f"tab_{c}", use_container_width=True):
-                st.session_state.company = c
 
+    # 클릭 시 즉시 상태 변경을 위한 콜백
+    def set_company(name):
+        st.session_state.company = name
+
+    for i, c in enumerate(companies):
+        label = f"▶ {c}" if c == st.session_state.company else c
+
+        with tab_cols[i]:
+            st.button(
+                label,
+                key=f"tab_{c}",
+                use_container_width=True,
+                on_click=set_company,
+                args=(c,)
+            )
 
     # 웹에서 표시될 기업명
     selected_display = st.session_state.company
@@ -64,6 +76,9 @@ with box:
     # 질문 목록 출력:
     # 질문은 접었다 펼 수 있는 expander로 표시
     # 질문을 클릭하면 답변이 보이게 함
-    for q, a in qa_list:
-        with st.expander(q):
-            st.text(a)
+    if not qa_list:
+        st.info("검색 결과가 없습니다.")
+    else:
+        for q, a in qa_list:
+            with st.expander(q):
+                st.text(a)
