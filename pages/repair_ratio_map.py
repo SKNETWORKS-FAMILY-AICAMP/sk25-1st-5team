@@ -4,6 +4,7 @@ import folium
 from folium.plugins import HeatMap
 import streamlit as st
 import streamlit.components.v1 as components
+from branca.element import Template, MacroElement
 
 import util
 from components.layout import render_sidebar, render_main_box
@@ -152,6 +153,38 @@ def make_map(_map_gdf, shop_df):
 
     folium.LayerControl(collapsed=False).add_to(m)
 
+    # 범례 추가 
+    def add_legend(map_obj):
+            legend_html = """
+            {% macro html(this, kwargs) %}
+            <div style="
+                position: fixed;
+                bottom: 30px;
+                right: 30px;
+                width: 170px;
+                z-index:9999;
+                background-color: white;
+                padding: 10px;
+                border-radius: 6px;
+                box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+                font-size: 13px;
+            ">
+                <b>정비소 부족 단계</b><br><br>
+                <i style="background:#000000;width:12px;height:12px;display:inline-block;"></i>
+                정비소 없음<br>
+                <i style="background:#800026;width:12px;height:12px;display:inline-block;"></i>
+                심각 (상위 10%)<br>
+                <i style="background:#FD8D3C;width:12px;height:12px;display:inline-block;"></i>
+                부족 (상위 25%)<br>
+                <i style="background:#FED976;width:12px;height:12px;display:inline-block;"></i>
+                보통
+            </div>
+            {% endmacro %}
+            """
+            macro = MacroElement()
+            macro._template = Template(legend_html)
+            map_obj.get_root().add_child(macro)
+    add_legend(m)
     return m
 
 # 화면
@@ -188,6 +221,8 @@ with box:
         map_gdf["repair_cnt"] = map_gdf["repair_cnt"].fillna(0)
 
         m = make_map(map_gdf, shop_df)
+
+
 
         components.html(
             m.get_root().render(),
