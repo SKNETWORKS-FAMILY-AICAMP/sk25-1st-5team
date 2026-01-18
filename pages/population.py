@@ -100,7 +100,7 @@ def draw_population_car_plot(pop_grouped, reg_grouped):
 
 def app():
     render_sidebar()   
-    box = render_main_box(title="Population and Car Registration Analysis")
+    box = render_main_box(title="인구 차량 추이")
     
     with box:
         pop_df, reg_df = load_data()

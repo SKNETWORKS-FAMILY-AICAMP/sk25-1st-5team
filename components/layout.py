@@ -32,6 +32,11 @@ def render_sidebar():
             width: 200px;
             height: 50px;
             text-align: center;
+            transition: all 0.3s ease;
+        }}
+        
+        section[data-testid="stSidebar"] .stButton > button:hover {{
+            background-color: #4a6f5f;
         }}
 
         section[data-testid="stSidebar"] .stImage {{
