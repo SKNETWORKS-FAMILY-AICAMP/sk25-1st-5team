@@ -93,15 +93,17 @@ def render_main_box(title: str):
         <style>
         .main-title {{
             background: {MAIN_TITLE_BG_COLOR};
-            border-radius: 8px;
+            border-radius: 8px 8px 0 0;
             padding: 10px 18px;
             font-weight: 800;
             color: {MAIN_TITLE_TEXT_COLOR};
             display: inline-block;
-            margin-bottom: 10px;
+            margin-left: 4px;
+            margin-bottom: 0;
+            min-width: 120px;
+            text-align: center;
         }}
 
-        
         div[data-testid="stVerticalBlock"] > div:has(> div[data-testid="stContainer"]) {{
             min-height: 720px;
         }}

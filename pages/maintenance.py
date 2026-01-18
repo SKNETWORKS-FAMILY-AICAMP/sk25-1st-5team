@@ -109,9 +109,7 @@ with box:
     if df is not None:
         df_map = preprocess_repair_data(df)
         
-        st.info(f"총 {len(df_map):,}개의 정비소 위치를 표시합니다.")
-        
-        with st.spinner("지도를 생성하는 중..."):
+        with st.spinner("정비소 지도를 불러오는 중..."):
             korea_map = create_maintenance_map(df_map)
         
         # Streamlit에서 지도 표시

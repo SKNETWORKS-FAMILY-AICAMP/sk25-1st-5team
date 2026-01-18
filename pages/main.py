@@ -270,7 +270,7 @@ with box:
     df = load_data()
     df_q = preprocess_to_quarter_df(df)
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns([1, 1, 2])
     with col1:
         region = render_region_selectbox(df_q)
     with col2:
