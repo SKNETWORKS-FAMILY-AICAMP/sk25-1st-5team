@@ -109,6 +109,10 @@ def render_main_box(title: str):
             min-width: 120px;
             text-align: center;
         }}
+        
+        div[data-testid="stContainer"] {{
+            border-top-left-radius: 0px !important;
+        }}
 
         div[data-testid="stVerticalBlock"] > div:has(> div[data-testid="stContainer"]) {{
             min-height: 720px;
