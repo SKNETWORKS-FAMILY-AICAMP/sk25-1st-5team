@@ -54,10 +54,26 @@
 - **데이터 분석가** : 자동차 등록 및 인프라 관련 데이터 분석 자료로 활용
 
 # 4. 수행 결과 (시연)
+- 전국 분기별 차량 등록 현황
 <p align="center">
 <img src="https://github.com/user-attachments/assets/82e4082a-20a6-49d1-8a48-53a4dbc7b39b">
 </p>
 
+- 인구 차량 추이
+<p align="center">
+<img src="https://github.com/user-attachments/assets/754ee2a1-7341-4863-bcfa-58de48fc495b">
+</p>
+
+- 정비소 인프라 현황
+<p align="center">
+<img src="https://github.com/user-attachments/assets/74d4576e-617f-456d-8ce9-2c4dba16a54a">
+</p>
+- 정비소 지도
+
+- 정비 FAQ
+<p align="center">
+<img src="https://github.com/user-attachments/assets/716d83c7-ed5c-4b5d-ab09-521fd01f275e">
+</p>
 
 ---
 
