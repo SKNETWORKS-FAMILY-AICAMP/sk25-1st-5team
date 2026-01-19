@@ -267,7 +267,7 @@ render_sidebar()
 box = render_main_box(title="등록 현황")
 
 with box:
-    render_help_icon("지도는 지역 분포를, 표는 수치를 확인할 수 있습니다.", align="right")
+    render_help_icon("차량 등록 데이터를 기반으로 분기별 차량 등록 현황을 시각화합니다.\n지역 또는 그래프 타입을 선택하여 필터링할 수 있습니다.", align="right")
 
     df = load_data()
     df_q = preprocess_to_quarter_df(df)

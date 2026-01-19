@@ -4,7 +4,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from components.layout import render_sidebar, render_main_box
+from components.layout import render_sidebar, render_main_box, render_help_icon
 import util
 import plotly.express as px
 
@@ -14,7 +14,7 @@ def load_data():
     pop_df = util.get_table_df('Population')
     reg_df = util.get_table_df('Car_reg')
     
-    # 시도명 표준화 (로드 시점에 통일)
+    # 시도명 표준화
     sido_mapping = {
         '전라북도': '전북특별자치도'
     }
@@ -43,7 +43,6 @@ def preprocess_data(pop_df, reg_df, sido_list=None):
 
 def draw_population_car_plot(pop_grouped, reg_grouped):
     """인구수와 차량대수 비교 그래프 생성"""
-    # 색상
     pastel_blue = '#6BA3D1'
     pastel_red = '#FF6B6B'
     
@@ -103,6 +102,7 @@ def app():
     box = render_main_box(title="인구 차량 추이")
     
     with box:
+        render_help_icon("인구수와 차량등록현황 데이터를 연도-월별로 비교하여 시각화합니다.\n지역을 선택하여 필터링할 수 있습니다.", align="right")
         pop_df, reg_df = load_data()
         
         # 그래프 상단에 지역 선택 드롭다운 추가
@@ -122,7 +122,6 @@ def app():
             sido_list=sido_list
         )
 
-        # 그래프 그리기
         fig = draw_population_car_plot(pop_grouped, reg_grouped)
         st.plotly_chart(fig, use_container_width=True)
 

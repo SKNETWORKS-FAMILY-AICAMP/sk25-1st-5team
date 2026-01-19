@@ -9,7 +9,7 @@ import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import util
-from components.layout import render_sidebar, render_main_box
+from components.layout import render_sidebar, render_main_box, render_help_icon
 
 
 # --------------------------------------------------
@@ -104,6 +104,7 @@ render_sidebar()
 box = render_main_box(title="정비소 위치")
 
 with box:
+    render_help_icon("정비소 위치를 지도에 시각화합니다.\n마커를 클릭하면 정비소 정보를 확인할 수 있습니다.", align="right")
     df = load_repair_shop_data()
     
     if df is not None:
