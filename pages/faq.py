@@ -1,9 +1,10 @@
 import pandas as pd
 import streamlit as st
 import ast
+import time
 
 from components.layout import render_sidebar, render_main_box
-from util import get_table_df
+from util import get_faq_table_df
 
 st.set_page_config(page_title="FAQ", layout="wide")
 
@@ -26,16 +27,16 @@ companies = list(COMPANY_MAP.keys())
 if "company" not in st.session_state:
     st.session_state.company = "HYUNDAI"
 
+# 클릭 시 즉시 상태 변경을 위한 콜백
+def set_company(name: str):
+    st.session_state.company = name
 
 # Box 안에 FAQ 렌더
 with box:
     # 기업별 버튼 만들기
     tab_cols = st.columns(len(companies), gap="small")
 
-    # 클릭 시 즉시 상태 변경을 위한 콜백
-    def set_company(name):
-        st.session_state.company = name
-
+    # 현재 클릭된 기업 faq 표시
     for i, c in enumerate(companies):
         label = f"▶ {c}" if c == st.session_state.company else c
 
@@ -55,8 +56,7 @@ with box:
     selected_db_name = COMPANY_MAP[selected_display]
 
     # 선택된 기업 저장 및 faq 데이터 불러오기
-    df = get_table_df("FAQ")
-    df = df[df["company_name"] == selected_db_name]
+    df = get_faq_table_df(selected_db_name)
 
     qa_list = []
     for _, row in df.iterrows():

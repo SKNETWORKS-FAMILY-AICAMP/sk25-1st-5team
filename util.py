@@ -2,6 +2,7 @@ import os
 import MySQLdb
 import pandas as pd
 from dotenv import load_dotenv
+import streamlit as st
 
 load_dotenv()
 
@@ -28,6 +29,21 @@ def get_table_df(table_name):
         query = f"SELECT * FROM {table_name}"
         df = pd.read_sql(query, conn)
         return df
+    finally:
+        cursor.close()
+        conn.close()
+
+@st.cache_data(show_spinner=False)
+def get_faq_table_df(c_name) -> pd.DataFrame:
+    """해당 테이블을 DataFrame으로 반환"""
+    conn, cursor = get_db_connection()
+    try:
+        query = """
+            SELECT faq_pairs
+            FROM FAQ
+            WHERE company_name = %s
+        """
+        return pd.read_sql(query, conn, params=[c_name])
     finally:
         cursor.close()
         conn.close()
