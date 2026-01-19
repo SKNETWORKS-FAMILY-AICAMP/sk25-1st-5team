@@ -127,18 +127,27 @@ def render_main_box(title: str):
 # 도움말
 def render_help_icon(
     tooltip: str,
+    align: str = "left",  # left | right | center
     width: int = 20,
     margin_top: int = 10
 ):
-    
     with open(IMG_PATH, "rb") as f:
         encoded = base64.b64encode(f.read()).decode()
 
+    text_align = {
+        "left": "left",
+        "right": "right",
+        "center": "center"
+    }[align]
+
     st.markdown(
         f"""
-        <img src="data:image/png;base64,{encoded}"
-             title="{tooltip}"
-             style="width:{width}px; cursor:help; margin-top:{margin_top}px;">
+        <div style="text-align:{text_align};">
+            <img src="data:image/png;base64,{encoded}"
+                 title="{tooltip}"
+                 style="width:{width}px; cursor:help; margin-top:{margin_top}px;">
+        </div>
         """,
         unsafe_allow_html=True
     )
+
