@@ -54,6 +54,9 @@
 - **데이터 분석가** : 자동차 등록 및 인프라 관련 데이터 분석 자료로 활용
 
 # 4. 수행 결과 (시연)
+<p align="center">
+<img src="https://github.com/user-attachments/assets/82e4082a-20a6-49d1-8a48-53a4dbc7b39b">
+</p>
 
 
 ---
