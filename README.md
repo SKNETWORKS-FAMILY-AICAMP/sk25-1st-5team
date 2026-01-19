@@ -69,6 +69,9 @@
 <img src="https://github.com/user-attachments/assets/74d4576e-617f-456d-8ce9-2c4dba16a54a">
 </p>
 - 정비소 지도
+<p align="center">
+<img src="https://github.com/user-attachments/assets/4ba3c8c6-ce33-4635-8ae5-6ee43a9eff4e">
+</p>
 
 - 정비 FAQ
 <p align="center">
