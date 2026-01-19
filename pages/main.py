@@ -8,7 +8,7 @@ from util import get_table_df
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
-from components.layout import render_sidebar, render_main_box
+from components.layout import render_sidebar, render_main_box, render_help_icon
 
 # color settings
 pastel_blue = '#6BA3D1'
@@ -267,6 +267,8 @@ render_sidebar()
 box = render_main_box(title="등록 현황")
 
 with box:
+    render_help_icon("지도는 지역 분포를, 표는 수치를 확인할 수 있습니다.", align="right")
+
     df = load_data()
     df_q = preprocess_to_quarter_df(df)
     
