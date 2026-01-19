@@ -33,7 +33,7 @@ LABEL_MAP = {
 # --------------------------------------------------
 # 1. 데이터 로드 함수
 # --------------------------------------------------
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def load_data():
     """DB에서 차량 등록 데이터 로드"""
     return get_table_df("Car_reg")

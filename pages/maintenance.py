@@ -15,7 +15,7 @@ from components.layout import render_sidebar, render_main_box
 # --------------------------------------------------
 # 1. 데이터 로드 함수
 # --------------------------------------------------
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def load_repair_shop_data():
     return util.get_table_df('Repair_shop')
 

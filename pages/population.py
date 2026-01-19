@@ -8,7 +8,7 @@ from components.layout import render_sidebar, render_main_box
 import util
 import plotly.express as px
 
-@st.cache_data
+@st.cache_data(show_spinner=False)
 def load_data():
     """DB에서 인구와 차량등록현황 데이터 로드"""
     pop_df = util.get_table_df('Population')
