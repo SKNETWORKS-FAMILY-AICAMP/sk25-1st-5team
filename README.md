@@ -10,7 +10,7 @@
 
 - **2026.01.16 ~ 2026.01.19**
 
-# 2. 프로젝트 개요
+# 3. 프로젝트 개요
 ## 📕 프로젝트명
 <div align="left">
   <img src="./img/autok_logo.png" alt="Auto, okay? Logo" width="300" />
@@ -53,8 +53,13 @@
 - **일반 차량 소유자** : 거주 지역의 정비소 현황 확인
 - **데이터 분석가** : 자동차 등록 및 인프라 관련 데이터 분석 자료로 활용
 
-# 4. 프로젝트 설계
-## 4.1 프로젝트 디렉토리 구조
+# 4. 수행 결과 (시연)
+
+
+---
+
+# 5. 프로젝트 설계
+## 5.1 프로젝트 디렉토리 구조
 
 ```text
 sk25-1st-5team/
@@ -68,7 +73,18 @@ sk25-1st-5team/
 │   └── config.toml
 ├── assets/                  # README/문서용 리소스
 │   ├── docs/                # ERD, 화면설계서, 기능정의서 등 문서 이미지
-│   │   └── erd.png
+│   │   ├── bmw.png
+│   │   ├── chevrolet.png
+│   │   ├── erd.png
+│   │   ├── genesis.png
+│   │   ├── hyundai.png
+│   │   ├── kgm.png
+│   │   ├── kia.png
+│   │   ├── ui_function_p1_main.png
+│   │   ├── ui_function_p2_population.png
+│   │   ├── ui_function_p3_repair_ratio_map.png
+│   │   ├── ui_function_p4_maintenance.png
+│   │   └── ui_function_p5_faq.png
 │   ├── screenshots/         # 실행 화면 캡처
 │   └── team/                # 팀원 프로필 이미지
 │       ├── 좀비(해준).jpg
@@ -89,7 +105,8 @@ sk25-1st-5team/
 │   ├── repair_shop_final.csv
 │   └── total_population_2021_2025_final3.csv
 ├── img/
-│   └── autok_logo.png       # 로고 이미지
+│   ├── autok_logo.png       # 로고 이미지
+│   └── help.png
 ├── pages/                   # Streamlit 페이지 모음
 │   ├── faq.py
 │   ├── main.py
@@ -98,17 +115,20 @@ sk25-1st-5team/
 │   └── repair_ratio_map.py
 └── src/
     ├── crawler/             # FAQ 크롤러 스크립트
-    │   ├── chevorlet_crawling.py
-    │   ├── genesis_faq_crawler.py
-    │   └── kgm_crawling.py
+    │   ├── bmw_crawler.py
+    │   ├── chevorlet_crawler.py
+    │   ├── genesis_crawler.py
+    │   ├── hyundai_crawler.py
+    │   ├── kgm_crawler.py
+    │   └── kia_crawler.py
     └── DB/                  # DB 테이블 생성 스크립트
         └── db_faq.py
 ```
 
-## 4.2 ERD
+## 5.2 ERD
 <div align="left"> <a href="./assets/docs/erd.png"> <img src="./assets/docs/erd.png" alt="ERD" width="800" /> </a> </div>
 
-## 4.3 데이터 출처
+## 5.3 데이터 출처
 본 프로젝트는 다음과 같은 데이터를 활용하여 구성되었습니다.
 
 - **정비소 데이터**  
@@ -119,8 +139,9 @@ sk25-1st-5team/
   국토교통부 통계누리에서 제공하는  
   [자동차등록현황보고](https://stat.molit.go.kr/portal/cate/statMetaView.do?hRsId=58)를 활용하였습니다.
 
-- **FAQ 데이터**  
-  자동차 관련 FAQ는 **총 6개 기업**의 공식 데이터를 수집·정리하여 활용하였습니다.
+- **FAQ 데이터**
+  자동차 관련 FAQ는 **총 6개 기업**의 공식 데이터를 수집·정리하여 활용하였습니다.</br>
+  <img src="./assets/docs/hyundai.png" alt="Hyundai" width="60" /> <img src="./assets/docs/kia.png" alt="Kia" width="60" /> <img src="./assets/docs/genesis.png" alt="Genesis" width="60" /> <img src="./assets/docs/kgm.png" alt="Kgm" width="60" /> <img src="./assets/docs/chevrolet.png" alt="Chevrolet" width="60" /> <img src="./assets/docs/bmw.png" alt="BMW" width="60" height="60" />     
   - [Hyundai](https://www.hyundai.com/kr/ko/faq.html)
   - [Kia](https://www.kia.com/kr/customer-service/center/faq)
   - [Genesis](https://www.genesis.com/kr/ko/support/faq.html)
@@ -128,7 +149,7 @@ sk25-1st-5team/
   - [Chevrolet](https://www.chevrolet.co.kr/faq/product-maintenance)
   - [BMW](https://www.bmw.co.kr/kr/s/?language=ko)
 
-## 4.4 화면·기능 설계서
+## 5.4 화면·기능 설계서
 ### Main Page
 <div align="left">
   <a href="./assets/docs/ui_function_p1_main.png">
@@ -166,7 +187,7 @@ sk25-1st-5team/
 
 ---
 
-# 5. 기술 스택
+# 6. 기술 스택
 ## 🛠️ Development
 ### Frontend & Visualization
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
@@ -182,15 +203,16 @@ sk25-1st-5team/
 ![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 
-
 ---
-
-# 6. 수행 결과
-
----
-
-# 7. 한 줄 회
-
-# 6. 수행결과
 
 # 7. 한 줄 회고
+> <img src="./assets/team/햄버거(연정).jpg" width="20" style="vertical-align:middle;" />&nbsp;**박연정** : 데이터 수집부터 시각화까지 전과정에 참여해보면서, DB 설계의 중요성을 배웠다. 이 경험을 바탕으로 다음 프로젝트에서는 유기적인 ERD를 구성해봐야겠다.
+> 요구 기능을 모두 구현해주는 팀원들과 함께할 수 있어서 즐거웠다.
+>
+> <img src="./assets/team/히터(지현).jpg" width="20" style="vertical-align:middle;" />&nbsp;**박지현** : 비전공자로서 처음 다뤄보는 공공데이터와 시각화 작업이었지만, 데이터 구조를 이해하고 전처리 과정을 직접 설계하며 분석의 흐름을 배울 수 있었다.
+>
+> <img src="./assets/team/좀비(해준).jpg" width="20" style="vertical-align:middle;" />&nbsp;**여해준** : 첫 팀 프로젝트라 많이 긴장되었으나 데이터 전처리를 하며 기존에 배웠던 파이썬 코드들을 응용하고 적용하는 과정에서 데이터 전처리의 중요성을 다시 상기할 수 있었다.
+>
+> <img src="./assets/team/택시(상민).jpg" width="20" style="vertical-align:middle;" />&nbsp;**이상민** : DB 연결 과정에서 테이블 간 관계를 명확히 정의하지 못해 ERD 설계가 유기적으로 이루어지지 못한 점이 아쉬웠지만, 첫 프로젝트를 통해 데이터 수집, 분석, 정리, 기능 구현까지 전반적인 과정을 직접 경험할 수 있었고, 다양한 역할을 수행해볼 수 있어 좋은 학습 기회가 되었다.
+>
+> <img src="./assets/team/초코(채림).jpg" width="20" style="vertical-align:middle;" />&nbsp;**이채림** : 처음으로 데이터 수집부터 시각화까지 전 과정을 진행해 어려움도 있었지만 좋은 경험이었다. DB 설계 단계에서 확장성과 정규화를 충분히 고려하지 못한 점이 아쉬움으로 남아 추후에는 확장성과 활용성을 고려한 구조로 DB를 설계하고 싶다.
