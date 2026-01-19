@@ -7,7 +7,7 @@ import streamlit.components.v1 as components
 from branca.element import Template, MacroElement
 
 import util
-from components.layout import render_sidebar, render_main_box
+from components.layout import render_sidebar, render_main_box, render_help_icon
 
 st.set_page_config(page_title="정비소 인프라 현황", layout="wide")
 
@@ -189,12 +189,23 @@ def make_map(_map_gdf, shop_df):
 
 # 화면
 with box:
+    col1, col2 = st.columns([9, 1])
     # 지도, 표 선택
-    view_mode = st.radio(
-        "보기 방식 선택",
-        ["🗺 지도 보기", "📊 표로 보기"],
-        horizontal=True
-    )
+    with col1:
+        view_mode = st.radio(
+            "",
+            ["🗺 지도 보기", "📊 표로 보기"],
+            horizontal=True,
+            label_visibility="collapsed"
+        )
+
+    
+
+    # 도움말 내부 텍스트 
+    with col2:
+        render_help_icon("지도는 지역 분포를, 표는 수치를 확인할 수 있습니다.")
+
+
 
     # 행정구역 json 정규화 (수원시팔달구 -> 수원시)
     def normalize_gugun(name):

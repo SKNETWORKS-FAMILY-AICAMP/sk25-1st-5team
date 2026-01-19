@@ -1,5 +1,7 @@
 import streamlit as st
 import os
+from pathlib import Path
+import base64
 
 # 색상
 SIDEBAR_SHADOW = "rgba(0, 0, 0, 0.1)"
@@ -8,6 +10,10 @@ BUTTON_TEXT_COLOR = "white"
 SELECTBOX_BORDER_COLOR = "#d0d0d0"
 MAIN_TITLE_BG_COLOR = "#f1d7d2"
 MAIN_TITLE_TEXT_COLOR = "#222"
+
+# 이미지 경로 설정
+BASE_DIR = Path(__file__).resolve().parent.parent
+IMG_PATH = BASE_DIR / "img" / "help.png"
 
 
 def render_sidebar():
@@ -116,3 +122,23 @@ def render_main_box(title: str):
 
     box = st.container(border=True)
     return box
+
+
+# 도움말
+def render_help_icon(
+    tooltip: str,
+    width: int = 20,
+    margin_top: int = 10
+):
+    
+    with open(IMG_PATH, "rb") as f:
+        encoded = base64.b64encode(f.read()).decode()
+
+    st.markdown(
+        f"""
+        <img src="data:image/png;base64,{encoded}"
+             title="{tooltip}"
+             style="width:{width}px; cursor:help; margin-top:{margin_top}px;">
+        """,
+        unsafe_allow_html=True
+    )
