@@ -126,7 +126,7 @@ sk25-1st-5team/
 ```
 
 ## 5.2 ERD
-<div align="left"> <a href="./assets/docs/erd.png"> <img src="./assets/docs/erd.png" alt="ERD" width="800" /> </a> </div>
+<div align="left"> <a href="./assets/docs/erd.png"> <img src="./assets/docs/erd.png" alt="ERD" width="700" /> </a> </div>
 
 ## 5.3 데이터 출처
 본 프로젝트는 다음과 같은 데이터를 활용하여 구성되었습니다.
