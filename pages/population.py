@@ -49,14 +49,14 @@ def draw_population_car_plot(pop_grouped, reg_grouped):
     # Multiple y axes line plot
     fig = px.line()
     fig.add_scatter(x=pop_grouped['year_month'], y=pop_grouped['population'], 
-                    mode='lines+markers', name='Population', yaxis='y1',
+                    mode='lines+markers', name='인구 수', yaxis='y1',
                     line=dict(color=pastel_blue), marker=dict(color=pastel_blue))
     fig.add_scatter(x=reg_grouped['year_month'], y=reg_grouped['total_car'], 
-                    mode='lines+markers', name='Total Cars', yaxis='y2',
+                    mode='lines+markers', name='총 차량 수', yaxis='y2',
                     line=dict(color=pastel_red), marker=dict(color=pastel_red))
     
     fig.update_layout(
-        title='Population and Total Cars Over Year-Month',
+        title='인구수와 차량등록현황 추이',
         plot_bgcolor='white',
         paper_bgcolor='white',
         xaxis=dict(
